@@ -1,0 +1,51 @@
+1-Install tsc 
+	1.1 npm i typescript -g
+	1.2 print hello world
+	1.3 run in watch mode
+		tsc -w
+		npm install -D concurrently
+		"start:dev": "concurrently \"tsc --watch\" \"node --watch dist/index.js\""
+        1.4 tsc config
+	1.5 src vs dist folder  &  srcDir  outputDir   remove comments
+	1.6 Statically vs Dynamically Typed Languages
+-------------------------------
+2- Type Annotations And Any Data Type
+	2.1 string Boolean number any
+	2.2 array and 2d array  and union type EX:=> (string|number)[]
+	2.3 Literal Types |
+	2.4 array vs tuple
+
+	2.5 objects
+	2.6 Type ALIAS  AND (& operator)
+	2.7 Enums
+        2.8 Type Assertions (as)
+		ex:
+			let x = ["hello world" , 25];
+			for (let i = 0; i < x.length; i++) {
+  				  let value = x[i] as string;
+   				  console.log(value.split(" ")); 
+			}
+----------------------
+	2.9 function 
+		2.9.1 optional and required params  
+		2.9.2 arrow function 
+		2.9.3 void  vs never
+		2.9.4 TS config  [ noImplicitAny ,  noImplicitReutruns ,  noUnusedLocal, noUnusedParamter]
+ ----------------------------------
+3-  Interface 
+	3.1  Interface Declaration
+	3.2  methods and params
+	3.3  reopen concept  vs  Extends
+	3.5  When to use interface
+		- Use interface for defining object shapes, especially in APIs and OOP-style programming.
+        - Use type for complex types, unions, and mapped types and primitive type.
+		- Use inline {} objects for quick, one-time use.
+---------------------------------
+4- class 
+	4.1 Class declaration
+	4.2 access modifiers (private  vs protected vs public)
+	4.3 set &  get  & static & private static
+	4.4 Polymorphism & Method Override
+	4.5 implements interface  and Partial<IUser>
+	4.6 Abstract Classes
+	4.7 Generics (default type ,  function , arrow  , multi-types , with class  and with Interface)
