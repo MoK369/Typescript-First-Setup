@@ -45,8 +45,14 @@ console.log(typeof person1);
 console.log(person1);
 // -------------
 // readonly array means it's a fixed array, you can't add or remove elements from it.
+// readonly keyword is just used with array and tuple
 let data: readonly (String | Number)[] = ["Hello", 123, "World", 456];
 // data.push("New Data"); ❌ Error because data is readonly
+// data.pop(); ❌ Error because data is readonly
+// data[0] = "New Data"; ❌ Error because data is readonly
+// data[1] = 789; ❌ Error because data is readonly
+// but we can reassign the whole array
+data = ["New Data", 789]; // we can reassign the whole array
 console.log(typeof data);
 console.log(data);
 // -------------
@@ -55,6 +61,7 @@ console.log(data);
 let tuple: readonly [String, number] = ["Hello", 123];
 //tuple.push("World"); // It will not give error but it's not recommended to use push method on tuple❌
 // we can add the keyword readonly to make it fixed size
+tuple = ["World", 456]; // we can reassign the whole tuple
 console.log(typeof tuple);
 console.log(tuple);
 // -------------
@@ -133,7 +140,7 @@ function sum3(a: number, b?: number, c?: number) {
 }
 console.log(sum3(5, undefined, 25)); // if we want to skip b, we have to pass undefined for b
 
-// better uesage here is to used the named parameters:
+// better uesage here is to use the named parameters:
 function sum3Named({ a, b = 0, c = 1 }: { a: number; b?: number; c?: number }) {
   return (a + b) * c;
 }
@@ -168,6 +175,9 @@ logMessage("Hello, world!");
 // }
 
 // 2. noImlicitReturns: true - It will give error if a function doesn't have a return statement in all code paths, default with false
+// function test1(a: number): number { ❌ Error because there is no return statement if a is less than 0
+//   if (a > 0) return a;
+// }
 
 // 3. noUnusedParameters: true - It will give error if a function has unused parameters, default with false
 // function test2(a: number, b: number): number { ❌ Error because b is unused
@@ -445,6 +455,7 @@ class Manager extends Employee {
 
   // overriding the getDetails method of Employee class
   // method overriding is one of the Polymorphism forms
+  // setting noImplicitOverride to true in tsconfig.json will give error if we don't use the override keyword while overriding a method
   override getDetails(): String {
     return `${super.getDetails()}, Department: ${this.department}`;
   }
